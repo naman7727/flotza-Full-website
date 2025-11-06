@@ -1,0 +1,1838 @@
+{
+	"info": {
+		"_postman_id": "6b4becbd-81b2-4d50-a40a-1e359f5524c2",
+		"name": "kartbuddy-nodejs1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45610708",
+		"_collection_link": "https://interstellar-firefly-838995.postman.co/workspace/My-Workspace~0f9ed081-3f8b-4fb7-869c-a8c9552d5cc0/collection/45610708-6b4becbd-81b2-4d50-a40a-1e359f5524c2?action=share&source=collection_link&creator=45610708"
+	},
+	"item": [
+		{
+			"name": "vendor",
+			"item": [
+				{
+					"name": "/api/auth/vendor/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Vendor",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "One",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "vendor11@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "business_name",
+									"value": "Vendor One Pvt Ltd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "business_address",
+									"value": "456 Market Lane",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "gst_number",
+									"value": "22BBBBB0000B1Z5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "mobile_number",
+									"value": "9123458789",
+									"type": "text"
+								},
+								{
+									"key": "alternate_no",
+									"value": "9988776655",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Vendor@123",
+									"type": "text"
+								},
+								{
+									"key": "pan_card_no",
+									"value": "PQRES6789K",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "adhar_no",
+									"value": "987654321098",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "gst_upload",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "pan_card_photo_upload",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "aadhar_front_photo_upload",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "aadhar_back_photo_upload",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "profile_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/vendor/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"vendor",
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:3000/api/auth/vendor/register \\\r\n  -H \"Content-Type: multipart/form-data\" \\\r\n  -F \"first_name=John\" \\\r\n  -F \"last_name=Doe\" \\\r\n  -F \"email=john@example.com\" \\\r\n  -F \"business_name=Doe Enterprises\" \\\r\n  -F \"business_address=123 Business St\" \\\r\n  -F \"gst_number=22AAAAA0000A1Z5\" \\\r\n  -F \"mobile_number=9876543210\" \\\r\n  -F \"alternate_no=8765432109\" \\\r\n  -F \"password=securepassword123\" \\\r\n  -F \"pan_card_no=ABCDE1234F\" \\\r\n  -F \"adhar_no=123456789012\" \\\r\n  -F \"gst_upload=@/path/to/gst_upload.jpg\" \\\r\n  -F \"pan_card_photo_upload=@/path/to/pan_card_photo_upload.jpg\" \\\r\n  -F \"aadhar_front_photo_upload=@/path/to/aadhar_front_photo_upload.jpg\" \\\r\n  -F \"aadhar_back_photo_upload=@/path/to/aadhar_back_photo_upload.jpg\" \\\r\n  -F \"profile_photo=@/path/to/profile_photo.jpg\"\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/vendor/login (email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vendor11@gmail.com\",\r\n    \"password\": \"Vendor@123\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/vendor/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"vendor",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:3000/api/auth/vendor/login \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"MySecurePassword\"\r\n  }'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/vendor/login (number)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile_number\": \"9123456789\",\r\n    \"password\": \"Vendor@123\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/vendor/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"vendor",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:3000/api/auth/vendor/login \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"mobile_number\": \"9876543210\",\r\n    \"password\": \"MySecurePassword\"\r\n  }'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/vendor/me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/api/auth/vendor/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"vendor",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "first-contact",
+			"item": [
+				{
+					"name": "/api/form/contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"Jane Doe\",\r\n    \"email\": \"jane.doe11111111@example.com\",\r\n    \"phone_number\": \"9876543210\",\r\n    \"message\": \"Id This a long message by Jane Doe.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/form/contact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"form",
+								"contact"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request POST 'http://localhost:3000/api/v1/contact' \\\r\n--header 'Content-Type: application/json' \\\r\n--data-raw '{\r\n    \"full_name\": \"Jane Doe\",\r\n    \"email\": \"jane.doe@example.com\",\r\n    \"phone_number\": \"9876543210\",\r\n    \"message\": \"I'd like to know more about your product.\"\r\n}'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/form/contact/ (get by ID)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <your_admin_token>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:1337/api/form/contact/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"form",
+								"contact",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4eda56be-0d49-48b3-888f-088df13210c0"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --location --request GET 'http://localhost:3000/api/v1/contact/<messageId>' \\\r\n--header 'Authorization: Bearer <your_admin_token>'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/form/contact (get all | search | filters)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <your_admin_token>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:1337/api/form/contact?status=In Progress&page=1&limit=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"form",
+								"contact"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "In Progress"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --location --request GET 'http://localhost:3000/api/v1/contact?status=New%20Query&page=1&limit=5' \\\r\n--header 'Authorization: Bearer <your_admin_token>'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/form/contact/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer <your_admin_token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"assigned_to\": \"Support Agent 1\",\r\n    \"status\": \"In Progress\",\r\n    \"outcome\": \"Reached out to customer for clarification\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/form/contact/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"form",
+								"contact",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4eda56be-0d49-48b3-888f-088df13210c0"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:3000/api/v1/contact/<messageId>' \\\r\n--header 'Content-Type: application/json' \\\r\n--header 'Authorization: Bearer <your_admin_token>' \\\r\n--data-raw '{\r\n    \"assigned_to\": \"Support Agent 1\",\r\n    \"status\": \"In Progress\",\r\n    \"outcome\": \"Reached out to customer for clarification\"\r\n}'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/form/contact/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <your_admin_token>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:1337/api/form/contact/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"form",
+								"contact",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4eda56be-0d49-48b3-888f-088df13210c0"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --location --request DELETE 'http://localhost:3000/api/v1/contact/<messageId>' \\\r\n--header 'Authorization: Bearer <your_admin_token>'\r\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "/api/auth/customer/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Custom",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "One",
+									"type": "text"
+								},
+								{
+									"key": "mobile_number",
+									"value": "9111111111",
+									"type": "text"
+								},
+								{
+									"key": "alternate_number",
+									"value": "9000000000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "customer1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "CustomerOne Pvt Ltd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "first_line_address",
+									"value": "789 Residency Rd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "second_line_address",
+									"value": "Suite 5A",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "Karnataka",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "Bangalore",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "pin_code",
+									"value": "560001",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "gst_no",
+									"value": "29CCCCC9999C1Z9",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "adhar_no",
+									"value": "456789123456",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "pan_card_no",
+									"value": "XYZAB1234P",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Customer1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "reference_code",
+									"value": "REFCUST001",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status_remarks",
+									"value": "Automated test registration",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "adhar_front_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "adhar_back_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "pan_card_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/customer/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"customer",
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:1337/api/auth/customer/register' \\\r\n--form 'first_name=\"Jane\"' \\\r\n--form 'last_name=\"Doe\"' \\\r\n--form 'phone_number=\"9876543210\"' \\\r\n--form 'alternate_number=\"8765432109\"' \\\r\n--form 'email=\"jane@example.com\"' \\\r\n--form 'company_name=\"Doe Corp\"' \\\r\n--form 'first_line_address=\"123 Main St\"' \\\r\n--form 'second_line_address=\"Apt 4B\"' \\\r\n--form 'state=\"Maharashtra\"' \\\r\n--form 'city=\"Mumbai\"' \\\r\n--form 'pin_code=\"400001\"' \\\r\n--form 'gst_no=\"27AAAAA0000A1Z5\"' \\\r\n--form 'adhar_no=\"123456789012\"' \\\r\n--form 'pan_card_no=\"ABCDE1234F\"' \\\r\n--form 'password=\"securepassword123\"' \\\r\n--form 'reference_code=\"REF123\"' \\\r\n--form 'status_remarks=\"New customer registration\"' \\\r\n--form 'adhar_front_photo=@\"/absolute/path/to/adhar_front.jpg\"' \\\r\n--form 'adhar_back_photo=@\"/absolute/path/to/adhar_back.jpg\"' \\\r\n--form 'pan_card_photo=@\"/absolute/path/to/pan_card.jpg\"' \\\r\n--form 'profile_picture=@\"/absolute/path/to/profile.jpg\"'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/customer/login (email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"customer1@gmail.com\",\r\n  \"password\": \"Customer1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/customer/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"customer",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:1337/api/auth/customer/login' \\ \n--header 'Content-Type: application/json' \\\r\n--data '{\r\n  \"email\": \"jane@example.com\",\r\n  \"password\": \"securepassword123\"\r\n}'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/customer/login (number)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phone_number\": 9111111111,\r\n  \"password\": \"Customer1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/customer/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"customer",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:1337/api/auth/customer/login' \\ \n--header 'Content-Type: application/json' \\\r\n--data '{\r\n  \"phone_number\": 9876543210,\r\n  \"password\": \"securepassword123\"\r\n}'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/customer/me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/api/auth/customer/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"customer",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "driver",
+			"item": [
+				{
+					"name": "/api/auth/driver/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Driver",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "One",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "driver13@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "mobile_number",
+									"value": "9222222892",
+									"type": "text"
+								},
+								{
+									"key": "alternate_number",
+									"value": "9333333333",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Driver@123",
+									"type": "text"
+								},
+								{
+									"key": "address_line_1",
+									"value": "Plot 12, Driver Colony",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address_line_2",
+									"value": "Sector 3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "Delhi",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "New Delhi",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "pin_code",
+									"value": "110001",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "current_address",
+									"value": "Temporary Shed, Sector 9, Delhi",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "vendor_code",
+									"value": "VEND_1750396218401_fnec5h5tl",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "vendor_name",
+									"value": "Vendor One Pvt Ltd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "pan_card_no",
+									"value": "LMNOP4321Q",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "aadhar_no",
+									"value": "654321098765",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "driving_licence_no",
+									"value": "DL0420236789",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "reference_code",
+									"value": "REFDRV001",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status_remark",
+									"value": "Test driver account",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "current_address_proof",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "pan_card_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "aadhar_front_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "aadhar_back_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "driving_licence_photo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/test-img.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/driver/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"driver",
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:1337/api/auth/driver/register' \\ \n--form 'first_name=\"Ravi\"' \\\r\n--form 'last_name=\"Kumar\"' \\\r\n--form 'email=\"ravi@example.com\"' \\\r\n--form 'mobile_number=\"9876543210\"' \\\r\n--form 'alternate_number=\"8765432109\"' \\\r\n--form 'password=\"securepassword123\"' \\\r\n--form 'address_line_1=\"123 Driver St\"' \\\r\n--form 'address_line_2=\"Near Market\"' \\\r\n--form 'state=\"Maharashtra\"' \\\r\n--form 'city=\"Mumbai\"' \\\r\n--form 'pin_code=\"400001\"' \\\r\n--form 'current_address=\"456 Temp St, Mumbai\"' \\\r\n--form 'vendor_code=\"VEND_12345678_abcd\"' \\\r\n--form 'vendor_name=\"Vendor Corp\"' \\\r\n--form 'pan_card_no=\"ABCDE1234F\"' \\\r\n--form 'aadhar_no=\"123456789012\"' \\\r\n--form 'driving_licence_no=\"MH0123456789\"' \\\r\n--form 'reference_code=\"REF123\"' \\\r\n--form 'status_remark=\"New driver registration\"' \\\r\n--form 'current_address_proof=@\"/path/to/current_address_proof.jpg\"' \\\r\n--form 'pan_card_photo=@\"/path/to/pan_card_photo.jpg\"' \\\r\n--form 'aadhar_front_photo=@\"/path/to/aadhar_front_photo.jpg\"' \\\r\n--form 'aadhar_back_photo=@\"/path/to/aadhar_back_photo.jpg\"' \\\r\n--form 'driving_licence_photo=@\"/path/to/driving_licence_photo.jpg\"' \\\r\n--form 'profile_picture=@\"/path/to/profile_picture.jpg\"'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/driver/login (email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"driver13@gmail.com\",\r\n  \"password\": \"Driver@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/driver/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"driver",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:1337/api/auth/driver/login' \\ \n--header 'Content-Type: application/json' \\\r\n--data '{\r\n  \"email\": \"ravi@example.com\",\r\n  \"password\": \"securepassword123\"\r\n}'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/driver/login (number)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mobile_number\": \"9222222222\",\r\n  \"password\": \"Driver@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/driver/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"driver",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:1337/api/auth/driver/login' \\ \n--header 'Content-Type: application/json' \\\r\n--data '{\r\n  \"mobile_number\": \"9876543210\",\r\n  \"password\": \"securepassword123\"\r\n}'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/driver/me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:1337/api/auth/driver/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"driver",
+								"me"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:1337/api/auth/driver/me' \\ \n--header 'Authorization: {{jwt_token}}'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "/api/auth/employee/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"Admin2\",\r\n  \"last_name\": \"ffh\",\r\n  \"email\": \"admin1rr03765@gmail.com\",\r\n  \"mobile_number\": 125853893,\r\n  \"app_roles\": \"admin\",  \r\n  \"password\": \"Admin@123\",\r\n  \"designation\":\"Manager\",\r\n  \"department\":\"Operations\",\r\n  \"status_remarks\":\"khdf\",\r\n  \"status\":\"Active\"\r\n  \r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/employee/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"employee",
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:1337/api/auth/employee/register \\ \r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"first_name\": \"Amit\",\r\n    \"last_name\": \"Sharma\",\r\n    \"email\": \"amit.sharma@example.com\",\r\n    \"mobile_number\": 9876543210,\r\n    \"app_roles\": \"manager\",\r\n    \"designation\": \"Manager\",\r\n    \"department\": \"Operation\",\r\n    \"reporting_manager\": \"EMP_123456789_abc123\",\r\n    \"password\": \"securepassword123\",\r\n    \"status_remarks\": \"New employee registration\"\r\n  }'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/employee/login (email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin10@gmail.com\",\r\n    \"password\": \"Admin@123\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/employee/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"employee",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:1337/api/auth/employee/login \\ \n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"email\": \"amit.sharma@example.com\",\r\n    \"password\": \"securepassword123\"\r\n  }'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/employee/login (number)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"console.log(response.data.token);\r",
+									"pm.environment.set(\"jwt_token\", response.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile_number\": 9333444455,\r\n    \"password\": \"Admin@123\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/employee/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"employee",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:1337/api/auth/employee/login \\ \n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"email\": \"amit.sharma@example.com\",\r\n    \"password\": \"securepassword123\"\r\n  }'\r"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/employee/me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/api/auth/employee/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"employee",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "place-manager",
+			"item": [
+				{
+					"name": "/api/place-manager/place/KBW1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IktCVTQiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NTE4MDc0NzMsImV4cCI6MTc1MTg5Mzg3M30.9LVp513DttTa1GA37AzaD8vfaER1zLHRLmcirtFIKDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:1337/api/place-manager/place/KBW1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"place-manager",
+								"place",
+								"KBW1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/place-manger/place/KBP1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MDc5ZGZiLWFjNzQtNGM4Yy04OTQ2LWM1MmU5NWI2YzlhNyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgxNjg0NCwiZXhwIjoxNzUxOTAzMjQ0fQ.Cdtp4zN1pE6T1rkuu5oUwpr75sVaGGoucw-apSEjlwU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"company_name\": \"New Name Pvt Ltd\",\n  \"address_line1\": \"New Industrial Area\",\n  \"city\": \"Delhi\",\n  \"status\": \"Under Review\",\n  \"status_remarks\": \"Updated by admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/place-manager/place/KBW7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"place-manager",
+								"place",
+								"KBW7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/place-manger/place/KBP1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"Suspended\",\n  \"status_remarks\": \"Temporarily inactive due to verification issues\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/place/KBP1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"place",
+								"KBP1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/place-manger/place/KBP1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"Approved\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/place/KBP1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"place",
+								"KBP1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/place-manager/register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IktCVTQiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NTE4MDc0NzMsImV4cCI6MTc1MTg5Mzg3M30.9LVp513DttTa1GA37AzaD8vfaER1zLHRLmcirtFIKDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"ABC Logistics Pvt Ltd\",                      // Min 3 characters\r\n  \"place_type\": \"Pickup Place\",                                  // Must be either \"Pickup Place\" or \"Consignee Place\"\r\n\r\n  \"address_line1\": \"Plot No 12, Industrial Area\",                // Min 5 characters\r\n  \"address_line2\": \"Phase 2, Near Highway\",                      // Min 5 characters\r\n\r\n  \"nearest_railway_station\": \"Central Railway Station\",          // Min 2 characters\r\n  \"nearest_bus_stop\": \"Industrial Bus Stop\",                     // Min 2 characters\r\n  \"landmark\": \"Near XYZ Mall\",                                    // Min 2 characters\r\n\r\n  \"city\": \"Pune\",                                                // Min 2 characters\r\n  \"state\": \"Maharashtra\",                                        // Min 2 characters\r\n  \"pincode\": 411019,                                             // Integer between 100000 to 999999\r\n\r\n  \"latitude\": 18.5204,                                           // Must be a number\r\n  \"longitude\": 73.8567,                                          // Must be a number\r\n\r\n  \"contact_person_name\": \"Ramesh Patil\",                         // Min 2 characters\r\n  \"contact_person_mobile\": \"9876543210\",                         // 10-digit Indian mobile number (6-9 start)\r\n  \"alternate_number\": \"9123456789\",                              // Same rule as above\r\n\r\n  \"parking_place_availability\": \"YES\",                           // Must be either \"YES\" or \"NO\"\r\n\r\n  \"place_source\": \"CUST001\",                                     // Required (Customer ID or any identifier)\r\n  \"place_source_name\": \"ABC Customer Pvt Ltd\",                   // Required\r\n\r\n  \"created_by\": \"Admin\",                                          // Must be either \"Admin\" or \"Customer\"\r\n\r\n  \"status\": \"New Registration\",                                   // Optional but valid options: 'New Registration', 'Under Review', 'Approved', 'Suspended'\r\n  \"status_remarks\": \"Initial registration completed\",             // Optional\r\n  \"gst_no\": \"27AABCU9603R1Z5\"                                     // Optional, but if provided, must match Indian GST 15-digit format\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/place-manager/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"place-manager",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/place-manager/allSource",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/place-manager/singleSource/fd6e4146-197b-40d9-a950-d89a572cf34c",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wallet Manager",
+			"item": [
+				{
+					"name": "/api/wallet-manager/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/api/wallet-manager/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"wallet-manager",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/wallet-manager/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/wallet-manager/KBU1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dc manager",
+			"item": [
+				{
+					"name": "/api/dc-manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MDc5ZGZiLWFjNzQtNGM4Yy04OTQ2LWM1MmU5NWI2YzlhNyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjA3MDI0OSwiZXhwIjoxNzUyMTU2NjQ5fQ.svXv8BcyEKnOMqhs4bd2OQHyIE2DAJGnZKo0kAJ-0GM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ADMIN_JWT_TOKEN"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"branch_name\": \"Indiranagar \",             // ✅ Name of the DC branch (Required, min 3 chars)\n\n  \"nearest_station\": \"Indiranagar Metro\",       // ✅ Nearest railway/metro station (Required, min 2 chars)\n\n  \"nearest_bus_stop\": \"100ft Bus Stop\",         // ✅ Nearest bus stop name (Required, min 2 chars)\n\n  \"state\": \"Karnataka\",                         // ✅ State where the DC is located (Required, min 2 chars)\n\n  \"city\": \"Bangalore\",                          // ✅ City where the DC is located (Required, min 2 chars)\n\n  \"pin_code\": 560038,                           // ✅ 6-digit PIN code (Required, between 100000 - 999999)\n\n  \"latitude\": 12.9716,                          // ✅ Exact latitude coordinate of the DC (Required, numeric)\n\n  \"longitude\": 77.6408,                         // ✅ Exact longitude coordinate of the DC (Required, numeric)\n\n  \"full_address\": \"12, 100 Feet Road, Indiranagar, Bangalore - 560038\",\n                                                // ✅ Full formatted address (Required, min 5 chars)\n                                                // Example format: \"House No, Street, Area, City - PinCode\"\n\n  \"mobile_number\": \"9876543210\",                // ✅ DC branch contact mobile number (Required, 10 digits starting with 6-9)\n\n  \"status\": \"Active\",                           // ✅ Current status of the DC branch (Optional)\n                                                // Allowed: \"Active\", \"Inactive\", \"Suspended\"\n                                                // Default: \"Active\" if not provided\n\n  \"remark\": \"Main hub for East Bangalore\"       // 🔍 Optional additional remarks about the branch\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/dc-manager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"dc-manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/dc-manager",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MDc5ZGZiLWFjNzQtNGM4Yy04OTQ2LWM1MmU5NWI2YzlhNyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjA3MDI0OSwiZXhwIjoxNzUyMTU2NjQ5fQ.svXv8BcyEKnOMqhs4bd2OQHyIE2DAJGnZKo0kAJ-0GM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ADMIN_JWT_TOKEN"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/dc-manager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"dc-manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/dc-manager/:branchId (get single DC Manager)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MDc5ZGZiLWFjNzQtNGM4Yy04OTQ2LWM1MmU5NWI2YzlhNyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjE1OTI3NywiZXhwIjoxNzUyMjQ1Njc3fQ.wNPm8EUJjimbnhnXHbRnXqkNosZI88GjuLwv5SxpnTg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/api/dc-manager/KBDC2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"dc-manager",
+								"KBDC2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/dc-manager/:branchId (delete DC Manager)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:1337/api/dc-manager/KBDC1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"dc-manager",
+								"KBDC1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/dc-manager/:branchId (update DC Manager)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"branch_name\": \"Updated Branch Name\",\n  \"status\": \"Inactive\",\n  \"remark\": \"Updated info\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/dc-manager/KBDC1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"dc-manager",
+								"KBDC1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
