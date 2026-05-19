@@ -354,333 +354,320 @@ const KartBuddyLanding = () => {
     <div className="min-h-screen bg-gray-50 font-sans">
       <style>{spinnerStyles}</style>
       {/* Header with Navigation */}
-      <header className="fixed w-full z-50 bg-white shadow-md py-2">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <div className="h-16 w-16 bg-transparent flex items-center justify-center mr-2">
-                <img
-                  src={logo}
-                  alt="Flotza logo"
-                  className="h-full w-full object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-10">
-              {["Home", "Services", "About", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-black-800 text-xl font-bold hover:text-blue-600 font-medium transition-colors duration-300 py-2"
-                >
-                  {item}
-                </a>
-              ))}
-              <a
-                href="/career"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-black-800 text-xl font-bold hover:text-blue-600 font-medium transition-colors duration-300 py-2"
-              >
-                Join Us
-              </a>
-              <div className="flex space-x-3">
-                <button
-                  onClick={() => {
-                    window.location.href = "https://app.kartbuddy.in/login";
-                  }}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md font-medium transition-colors duration-300"
-                >
-                  Login
-                </button>
-                <button
-                  onClick={() => {
-                    window.location.href = "https://app.kartbuddy.in/register";
-                  }}
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-md font-medium transition-colors duration-300"
-                >
-                  Register
-                </button>
-              </div>
-            </nav>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-blue-600 focus:outline-none"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d={
-                      isMenuOpen
-                        ? "M6 18L18 6M6 6l12 12"
-                        : "M4 6h16M4 12h16M4 18h16"
-                    }
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <nav className="md:hidden bg-white shadow-lg rounded-lg mt-2 p-4 absolute left-0 right-0 mx-4 border border-gray-200">
-              <div className="flex flex-col space-y-3">
-                {["Home", "Services", "About", "Contact"].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 py-2 border-b border-gray-100"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item}
-                  </a>
-                ))}
-                <a
-                  href="/career"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 py-2 border-b border-gray-100"
-                >
-                  Join Us
-                </a>
-                <div className="flex flex-col space-y-2 pt-2">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-300">
-                    Login
-                  </button>
-                  <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md font-medium transition-colors duration-300">
-                    Register
-                  </button>
-                </div>
-              </div>
-            </nav>
-          )}
+     <header className="fixed w-full z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 shadow-md py-2">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="flex justify-between items-center">
+      <div className="flex items-center">
+        <div className="h-16 w-16 bg-transparent flex items-center justify-center mr-2">
+          <img
+            src={logo}
+            alt="Flotza logo"
+            className="h-full w-full object-contain"
+          />
         </div>
-      </header>
+      </div>
+
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex space-x-10">
+        {["Home", "Services", "About", "Contact"].map((item) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            className="text-white text-xl font-bold hover:text-cyan-400 transition-colors duration-300 py-2"
+          >
+            {item}
+          </a>
+        ))}
+        <a
+          href="/career"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white text-xl font-bold hover:text-cyan-400 transition-colors duration-300 py-2"
+        >
+          Join Us
+        </a>
+        <div className="flex space-x-3">
+          <button
+            onClick={() => {
+              window.location.href = "https://app.kartbuddy.in/login";
+            }}
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded-md font-medium transition-colors duration-300"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => {
+              window.location.href = "https://app.kartbuddy.in/register";
+            }}
+            className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2 rounded-md font-medium transition-colors duration-300"
+          >
+            Register
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu button */}
+      <div className="md:hidden flex items-center">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="text-white hover:text-cyan-400 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={
+                isMenuOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile Navigation */}
+    {isMenuOpen && (
+      <nav className="md:hidden bg-gray-900/90 backdrop-blur-md shadow-lg rounded-lg mt-2 p-4 absolute left-0 right-0 mx-4 border border-gray-700 z-50">
+        <div className="flex flex-col space-y-3">
+          {["Home", "Services", "About", "Contact"].map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="text-white hover:text-cyan-400 font-medium transition-colors duration-300 py-2 border-b border-gray-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item}
+            </a>
+          ))}
+          <a
+            href="/career"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-cyan-400 font-medium transition-colors duration-300 py-2 border-b border-gray-700"
+          >
+            Join Us
+          </a>
+          <div className="flex flex-col space-y-2 pt-2">
+            <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-md font-medium transition-colors duration-300">
+              Login
+            </button>
+            <button className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md font-medium transition-colors duration-300">
+              Register
+            </button>
+          </div>
+        </div>
+      </nav>
+    )}
+  </div>
+</header>
+
 
       {/* Hero Section */}
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+          }
+
+          @keyframes spinSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+
+          @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+          }
+
+          .animate-float {
+            animation: float 6s ease-in-out infinite;
+          }
+
+          .animate-spin-slow {
+            animation: spinSlow 20s linear infinite;
+          }
+
+          .animate-pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+          }
+        `}
+      </style>
+
       <section
         id="home"
-        className="pt-28 md:pt-32 relative bg-gradient-to-r from-blue-900 to-blue-700 text-white"
+        className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 z-10">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+        {/* Floating Circles */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-24 h-24 bg-cyan-500 rounded-full opacity-30 animate-pulse-glow"></div>
+          <div className="absolute bottom-32 right-16 w-32 h-32 bg-amber-400 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-white rounded-full opacity-10 animate-spin-slow"></div>
+          <div className="absolute top-10 right-40 w-20 h-20 bg-cyan-300 rounded-full opacity-25 animate-float"></div>
+          <div className="absolute bottom-10 left-1/4 w-28 h-28 bg-amber-300 rounded-full opacity-20 animate-pulse-glow"></div>
+          <div className="absolute top-1/3 right-1/3 w-14 h-14 bg-white rounded-full opacity-10 animate-spin-slow"></div>
+        </div>
+
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-6 py-20 w-full relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
                 Connecting <br />
-                Parcels,
-                <br />
-                <span className="text-yellow-400">Connecting people.</span>
+                Parcels, <br />
+                <span className="text-amber-400">Connecting people.</span>
               </h1>
-              <p className="text-lg md:text-xl max-w-md opacity-90">
-                Professional logistics solutions tailored to meet your business
-                needs with reliability and efficiency.
+              <p className="text-lg md:text-xl text-slate-300 max-w-md">
+                Professional logistics solutions tailored to meet your business needs with reliability and efficiency.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="#services"
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-md font-medium text-center transition-all duration-300 hover:shadow-lg"
+                  className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-medium text-center transition-all duration-300 shadow-md hover:shadow-amber-500/30"
                 >
                   Our Services
                 </a>
                 <a
                   href="#about"
-                  className="relative overflow-hidden group bg-white text-black px-8 py-4 rounded-md font-medium text-center transition-all duration-300"
+                  className="relative group bg-white text-black px-8 py-4 rounded-xl font-medium text-center overflow-hidden transition-all duration-300"
                 >
                   <span className="relative z-10">About Us</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-200 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-100 to-cyan-300 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </a>
               </div>
             </div>
 
-            <div className="mt-4 md:mt-0 flex justify-center z-10">
-              <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
-                <h3 className="text-center text-gray-800 text-xl font-bold mb-6">
-                  Track Your Shipment
-                </h3>
-                <form onSubmit={handleTracking} className="space-y-6">
-                  <div>
-                    <input
-                      type="text"
-                      value={trackingId}
-                      onChange={(e) => setTrackingId(e.target.value)}
-                      placeholder="Enter your tracking ID..."
-                      className="w-full px-4 py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
-                      required
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-md font-medium transition-colors duration-300"
-                  >
-                    Track Now
-                  </button>
-                </form>
-                <div className="mt-4 text-center text-sm text-gray-600">
-                  <p>Get real-time updates on your shipment status</p>
-                </div>
-              </div>
+            {/* Right Content - Tracking Card */}
+            <div className="flex justify-center">
+              
+              
             </div>
           </div>
-        </div>
-
-        {/* Wave separator */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path
-              fill="#f9fafb"
-              fillOpacity="1"
-              d="M0,128L48,144C96,160,192,192,288,197.3C384,203,480,181,576,170.7C672,160,768,160,864,170.7C960,181,1056,203,1152,197.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 md:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Services
-            </h2>
-            <div className="h-1 w-24 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Professional logistics solutions tailored to meet your business
-              needs
-            </p>
+     <section id="services" className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+  <div className="max-w-7xl mx-auto px-6">
+    {/* Section Header */}
+    <div className="text-center mb-20">
+      <h2 className="text-4xl font-extrabold text-white tracking-tight drop-shadow-lg">
+        Our Services
+      </h2>
+      <div className="mt-4 mb-6 flex justify-center">
+        <span className="inline-block h-1 w-28 bg-cyan-400 rounded-full"></span>
+      </div>
+      <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+        Professional logistics solutions tailored to meet your business needs
+      </p>
+    </div>
+
+    {/* Services Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {services.map((service) => (
+        <div
+          key={service.id}
+          className="group relative bg-slate-800 rounded-2xl shadow-xl p-8 border border-slate-700 hover:border-cyan-400 transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-cyan-500/30 flex flex-col items-center text-center"
+          onMouseEnter={() => setActiveService(service.id)}
+          onMouseLeave={() => setActiveService(null)}
+        >
+          {/* Icon Container */}
+          <div
+            className={`flex items-center justify-center w-20 h-20 rounded-full mb-6 transition-transform duration-500 ${
+              activeService === service.id ? "bg-cyan-600 scale-110 animate-pulse" : "bg-slate-700"
+            }`}
+          >
+            <div className="text-cyan-300 group-hover:text-white transition-colors duration-300">
+              {service.icon}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div
-                key={service.id}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl p-8 transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-blue-600"
-                onMouseEnter={() => setActiveService(service.id)}
-                onMouseLeave={() => setActiveService(null)}
-              >
-                <div
-                  className={`mx-auto flex items-center justify-center w-20 h-20 rounded-full mb-6 transition-all duration-300 ${
-                    activeService === service.id
-                      ? "bg-blue-100 scale-110"
-                      : "bg-gray-100"
-                  }`}
-                >
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-center">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          {/* Title & Description */}
+          <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+            {service.title}
+          </h3>
+          <p className="text-slate-400 leading-relaxed">
+            {service.description}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* About Section */}
-      <section id="about" className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              About Flotza
-            </h2>
-            <div className="h-1 w-24 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg italic">
-              "CONNECTING PARCELS, CONNECTING PEOPLE"
-            </p>
-          </div>
+   <section id="about" className="relative py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+  {/* Background Glow */}
+  <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-gray-800/30 to-gray-900/40 pointer-events-none"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-fade-in-left">
-              <h3 className="text-2xl md:text-3xl font-bold text-yellow-500">
-                Driving Excellence for 15+ Years
-              </h3>
+  <div className="max-w-6xl mx-auto px-6 relative z-10">
+    {/* Hero Intro */}
+    <div className="text-center mb-20">
+      <h2 className="text-5xl font-extrabold text-white tracking-tight mb-4">
+        About Flotza
+      </h2>
+      <p className="text-xl text-cyan-300 italic font-medium">
+        "CONNECTING PARCELS, CONNECTING PEOPLE"
+      </p>
+      <div className="mt-6 flex justify-center">
+        <span className="inline-block h-1 w-32 bg-cyan-400 rounded-full"></span>
+      </div>
+    </div>
 
-              <div className="space-y-4">
-                <p className="text-gray-700">
-                  At <span className="font-semibold">Flotza</span>, we don't
-                  just move goods—we move businesses forward. With over{" "}
-                  <span className="font-semibold">15 years of expertise</span>{" "}
-                  in the logistics and transport industry, we have established a
-                  reputation for{" "}
-                  <span className="font-semibold">
-                    unwavering reliability, operational efficiency, and
-                    unparalleled customer satisfaction
-                  </span>
-                  .
-                </p>
+    {/* Feature Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+      <div className="bg-gray-800 border border-cyan-500 rounded-2xl p-6 shadow-lg hover:shadow-cyan-500/30 transition duration-500 transform hover:-translate-y-2">
+        <h3 className="text-xl font-bold text-cyan-400 mb-3">15+ Years of Excellence</h3>
+        <p className="text-slate-300">
+          Flotza has built a legacy of reliability, efficiency, and customer satisfaction in logistics.
+        </p>
+      </div>
+      <div className="bg-gray-800 border border-cyan-500 rounded-2xl p-6 shadow-lg hover:shadow-cyan-500/30 transition duration-500 transform hover:-translate-y-2">
+        <h3 className="text-xl font-bold text-cyan-400 mb-3">Tech-Driven Innovation</h3>
+        <p className="text-slate-300">
+          We integrate real-time tracking, AI route optimization, and seamless order management.
+        </p>
+      </div>
+      <div className="bg-gray-800 border border-cyan-500 rounded-2xl p-6 shadow-lg hover:shadow-cyan-500/30 transition duration-500 transform hover:-translate-y-2">
+        <h3 className="text-xl font-bold text-cyan-400 mb-3">Strategic Partnerships</h3>
+        <p className="text-slate-300">
+          Flotza empowers businesses with long-term relationships and efficient supply chains.
+        </p>
+      </div>
+    </div>
 
-                <p className="text-gray-700">
-                  Our commitment to{" "}
-                  <span className="font-semibold">
-                    innovation and excellence
-                  </span>{" "}
-                  drives us to integrate the latest advancements in technology,
-                  including{" "}
-                  <span className="font-semibold">
-                    real-time tracking, AI-driven route optimization, and
-                    seamless order management
-                  </span>
-                  .
-                </p>
-
-                <p className="text-gray-700">
-                  At Flotza, we are more than just a logistics provider—we
-                  are a trusted partner, fostering{" "}
-                  <span className="font-semibold">
-                    long-term relationships, building efficient supply chains,
-                    and empowering businesses to thrive
-                  </span>
-                  .
-                </p>
+    {/* Journey Milestones */}
+    <div className="space-y-12">
+      <h3 className="text-3xl font-bold text-center text-cyan-400 mb-10">Our Journey</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {timeline.map((item, index) => (
+          <div key={index} className="bg-gray-800 border-l-4 border-cyan-500 p-6 rounded-xl shadow-md hover:shadow-cyan-500/30 transition duration-300 transform hover:-translate-y-1">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-cyan-500 text-white font-bold text-lg shadow">
+                {item.year}
               </div>
+              <h4 className="ml-4 text-xl font-bold text-white">{item.title}</h4>
             </div>
-
-            <div className="space-y-8 animate-fade-in-right">
-              <h3 className="text-2xl font-bold text-blue-600 text-center">
-                Our Journey
-              </h3>
-
-              <div className="space-y-12">
-                {timeline.map((item, index) => (
-                  <div key={index} className="relative">
-                    {/* Line connecting timeline items */}
-                    {index < timeline.length - 1 && (
-                      <div className="absolute left-8 top-12 bottom-0 w-1 bg-blue-200"></div>
-                    )}
-
-                    <div className="flex">
-                      <div className="flex-shrink-0">
-                        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white font-bold text-xl shadow-lg">
-                          {item.year}
-                        </div>
-                      </div>
-                      <div className="ml-6 bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600 hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
-                        <h4 className="text-xl font-bold mb-2">{item.title}</h4>
-                        <p className="text-gray-600">{item.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <p className="text-slate-300">{item.description}</p>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* Stats Section */}
       <section className="py-12 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
@@ -707,210 +694,157 @@ const KartBuddyLanding = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Contact Us
-            </h2>
-            <div className="h-1 w-24 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Have questions? We're here to help!
-            </p>
-          </div>
+   <section id="contact" className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+  <div className="max-w-7xl mx-auto px-6">
+    {/* Header */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-extrabold text-white tracking-tight mb-4">
+        Contact Us
+      </h2>
+      <div className="h-1 w-28 bg-cyan-400 mx-auto mb-6 rounded-full"></div>
+      <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+        Have questions? We're here to help!
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="bg-blue-600 py-6 px-8 text-white">
-                <h3 className="text-xl font-bold mb-2">GET IN TOUCH</h3>
-                <p>We'd love to hear from you</p>
-              </div>
-              <div className="p-8">
-                <div className="space-y-6">
-                  <div className="flex items-center">
-                    <div className="bg-blue-100 rounded-full p-3 mr-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Phone</div>
-                      <div className="font-medium">+91 7727918430</div>
-                    </div>
-                  </div>
+    {/* Grid Layout */}
 
-                  <div className="flex items-center">
-                    <div className="bg-blue-100 rounded-full p-3 mr-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Email</div>
-                      <div className="font-medium">connect@Flotza.in</div>
-                    </div>
-                  </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* Contact Info Card */}
+      <div className="bg-gray-800 rounded-3xl shadow-xl p-8 border border-gray-700 hover:shadow-cyan-500/30 transition duration-500">
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold text-cyan-400 mb-2">GET IN TOUCH</h3>
+          <p className="text-slate-300">We'd love to hear from you</p>
+        </div>
 
-                  <div className="flex items-center">
-                    <div className="bg-blue-100 rounded-full p-3 mr-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Location</div>
-                      <div id="address"className="font-medium">{addres}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8">
-             <iframe
-  width="600"
-  height="450"
-  style={{ border: 0 }}
-  loading="lazy"
-  allowFullScreen
-  referrerPolicy="no-referrer-when-downgrade"
-  src={`https://www.google.com/maps?q=${encodeURIComponent(addres)}&output=embed`}
-/>
-                </div>
-              </div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="bg-cyan-600 p-3 rounded-full">
+              {/* Phone Icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
             </div>
-
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="bg-yellow-500 py-6 px-8 text-white">
-                <h3 className="text-xl font-bold mb-2">SEND US A MESSAGE</h3>
-                <p>We'll get back to you as soon as possible</p>
-              </div>
-              <div className="p-8">
-                <form className="space-y-6" onSubmit={(e)=>handleSubmit(e)}>
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Full Name
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="Your name"
-                      value={full_name}
-                      onChange={(e) => {
-                        setFullName(e.target.value);
-                      }}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                      }}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="mobileNumber"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Mobile Number
-                    </label>
-                    <input
-                      id="mobileNumber"
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="10-digit mobile number"
-                      value={mobileNumber}
-                      onChange={handleMobileNumberChange}
-                      pattern="[0-9]{10}"
-                      title="Please enter a 10-digit mobile number"
-                      required
-                    />
-                    <p className="text-xs text-gray-500 mt-1">Enter a 10-digit mobile number</p>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="Your message..."
-                      value={message}
-                      onChange={(e) => {
-                        setMessage(e.target.value);
-                      }}
-                      required
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-md font-medium transition-colors duration-300"
-                  >
-                    Send Message
-                  </button>
-                </form>
-              </div>
+            <div>
+              <div className="text-sm text-slate-400">Phone</div>
+              <div className="font-medium text-white">+91 7727918430</div>
             </div>
           </div>
+
+          <div className="flex items-center gap-4">
+            <div className="bg-cyan-600 p-3 rounded-full">
+              {/* Email Icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <div className="text-sm text-slate-400">Email</div>
+              <div className="font-medium text-white">connect@Flotza.in</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="bg-cyan-600 p-3 rounded-full">
+              {/* Location Icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <div className="text-sm text-slate-400">Location</div>
+              <div className="font-medium text-white">Jaipur, Rajasthan</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Map */}
+        <div className="mt-10 rounded-xl overflow-hidden shadow-lg">
+          <iframe
+            width="100%"
+            height="300"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Jaipur,%20Rajasthan&output=embed"
+          />
+        </div>
+      </div>
+
+      {/* Contact Form Card */}
+      <div className="bg-gray-800 rounded-3xl shadow-xl p-8 border border-gray-700 hover:shadow-amber-500/30 transition duration-500">
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold text-amber-400 mb-2">SEND US A MESSAGE</h3>
+          <p className="text-slate-300">We'll get back to you as soon as possible</p>
+        </div>
+
+        <form className="space-y-6" onSubmit={(e) => handleSubmit(e)}>
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-1">Full Name</label>
+            <input
+              id="name"
+              type="text"
+              className="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Your name"
+              value={full_name}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-1">Email</label>
+            <input
+              id="email"
+              type="email"
+              className="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="mobileNumber" className="block text-sm font-medium text-slate-300 mb-1">Mobile Number</label>
+            <input
+              id="mobileNumber"
+              type="text"
+              className="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="10-digit mobile number"
+              value={mobileNumber}
+              onChange={handleMobileNumberChange}
+              pattern="[0-9]{10}"
+              title="Please enter a 10-digit mobile number"
+              required
+            />
+            <p className="text-xs text-slate-400 mt-1">Enter a 10-digit mobile number</p>
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-1">Message</label>
+            <textarea
+              id="message"
+              rows={4}
+              className="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Your message..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-md font-medium transition-colors duration-300"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+        </div>
         </div>
       </section>
 
