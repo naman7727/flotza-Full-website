@@ -11,6 +11,7 @@ INSERT INTO approle (name) VALUES ('vendor');
 INSERT INTO approle (name) VALUES ('sdddriver');
 INSERT INTO approle (name) VALUES ('customer');
 INSERT INTO approle (name) VALUES ('staff');
+INSERT INTO approle (name) VALUES ('admin');
 
 -- Create customers table (with fixed pan_card_no)
 CREATE TABLE customers (
@@ -44,7 +45,7 @@ CREATE TABLE customers (
     pan_card_photo TEXT,
     profile_picture TEXT,
     wallet_balance BIGINT DEFAULT 0,
-    referral_code TEXT UNIQUE NOT NULL DEFAULT (gen_random_uuid()::TEXT),
+    referral_code TEXT UNIQUE NOT NULL DEFAULT (uuid_generate_v4()::TEXT),
     reference_code TEXT,
     password TEXT NOT NULL,
     registration_date_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -69,71 +70,6 @@ CREATE TABLE customers (
     CONSTRAINT customers_app_role_fkey FOREIGN KEY (app_role) REFERENCES approle(name) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-
--- Create drivers table (new schema)
-CREATE TABLE drivers (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    driver_id TEXT UNIQUE NOT NULL,
-    app_role TEXT NOT NULL DEFAULT 'sdddriver',
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    full_name TEXT GENERATED ALWAYS AS (first_name || ' ' || last_name) STORED,
-    email TEXT NOT NULL,
-    mobile_number TEXT NOT NULL,
-    alternate_number TEXT,
-    password TEXT NOT NULL,
-    address_line_1 TEXT NOT NULL,
-    address_line_2 TEXT,
-    state TEXT NOT NULL,
-    city TEXT NOT NULL,
-    pin_code TEXT NOT NULL,
-    full_address TEXT GENERATED ALWAYS AS (
-        address_line_1 || 
-        COALESCE(', ' || address_line_2, '') || ', ' || 
-        city || ', ' || 
-        state || ' - ' || 
-        pin_code
-    ) STORED,
-    current_address_proof TEXT NOT NULL,
-    current_address TEXT NOT NULL,
-    vendor_code TEXT NOT NULL,
-    vendor_name TEXT NOT NULL,
-    pan_card_no TEXT NOT NULL,
-    pan_card_photo TEXT NOT NULL,
-    aadhar_no TEXT NOT NULL,
-    aadhar_front_photo TEXT NOT NULL,
-    aadhar_back_photo TEXT NOT NULL,
-    driving_licence_no TEXT NOT NULL,
-    driving_licence_photo TEXT NOT NULL,
-    profile_picture TEXT NOT NULL,
-    cod_holdings NUMERIC(10,2) DEFAULT 0 CHECK (cod_holdings >= 0),
-    chalan_holdings NUMERIC(10,2) DEFAULT 0 CHECK (chalan_holdings >= 0),
-    total_deliveries INTEGER DEFAULT 0 CHECK (total_deliveries >= 0),
-    customer_ratings NUMERIC(3,1) CHECK (customer_ratings IS NULL OR customer_ratings BETWEEN 1.0 AND 5.0),
-    referral_code TEXT UNIQUE NOT NULL DEFAULT (gen_random_uuid()::TEXT),
-    reference_code TEXT,
-    status TEXT NOT NULL DEFAULT 'New' CHECK (status IN ('New', 'Approved', 'Hold', 'Suspended', 'Blacklisted')),
-    status_remark TEXT,
-    last_device_used JSONB,
-    current_device_using JSONB,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT drivers_email_unique UNIQUE (email),
-    CONSTRAINT drivers_mobile_number_unique UNIQUE (mobile_number),
-    CONSTRAINT drivers_alternate_number_unique UNIQUE (alternate_number),
-    CONSTRAINT drivers_pan_card_no_unique UNIQUE (pan_card_no),
-    CONSTRAINT drivers_aadhar_no_unique UNIQUE (aadhar_no),
-    CONSTRAINT drivers_driving_licence_no_unique UNIQUE (driving_licence_no),
-    CONSTRAINT drivers_email_check CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
-    CONSTRAINT drivers_mobile_number_check CHECK (mobile_number ~ '^[0-9]{10,15}$'),
-    CONSTRAINT drivers_alternate_number_check CHECK (alternate_number IS NULL OR alternate_number ~ '^[0-9]{10,15}$'),
-    CONSTRAINT drivers_pin_code_check CHECK (pin_code ~ '^[0-9]{6,10}$'),
-    CONSTRAINT drivers_pan_card_no_check CHECK (pan_card_no ~ '^[A-Z]{5}[0-9]{4}[A-Z]{1}$'),
-    CONSTRAINT drivers_aadhar_no_check CHECK (aadhar_no ~ '^[0-9]{12}$'),
-    CONSTRAINT drivers_alternate_number_differs CHECK (alternate_number IS DISTINCT FROM mobile_number),
-    CONSTRAINT drivers_app_role_fkey FOREIGN KEY (app_role) REFERENCES approle(name) ON UPDATE CASCADE ON DELETE RESTRICT,
-    CONSTRAINT drivers_vendor_code_fkey FOREIGN KEY (vendor_code) REFERENCES vendors(vendor_id) ON UPDATE CASCADE ON DELETE RESTRICT
-);
 
 -- Create vendors table with app_role as foreign key
 CREATE TABLE vendors (
@@ -177,6 +113,72 @@ CREATE TABLE vendors (
     CONSTRAINT vendors_adhar_no_check CHECK (adhar_no ~ '^[0-9]{12}$'),
     CONSTRAINT vendors_alternate_no_differs CHECK (alternate_no IS DISTINCT FROM mobile_number),
     CONSTRAINT vendors_app_role_fkey FOREIGN KEY (app_role) REFERENCES approle(name) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+
+-- Create drivers table (new schema)
+CREATE TABLE drivers (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    driver_id TEXT UNIQUE NOT NULL,
+    app_role TEXT NOT NULL DEFAULT 'sdddriver',
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    full_name TEXT GENERATED ALWAYS AS (first_name || ' ' || last_name) STORED,
+    email TEXT NOT NULL,
+    mobile_number TEXT NOT NULL,
+    alternate_number TEXT,
+    password TEXT NOT NULL,
+    address_line_1 TEXT NOT NULL,
+    address_line_2 TEXT,
+    state TEXT NOT NULL,
+    city TEXT NOT NULL,
+    pin_code TEXT NOT NULL,
+    full_address TEXT GENERATED ALWAYS AS (
+        address_line_1 || 
+        COALESCE(', ' || address_line_2, '') || ', ' || 
+        city || ', ' || 
+        state || ' - ' || 
+        pin_code
+    ) STORED,
+    current_address_proof TEXT NOT NULL,
+    current_address TEXT NOT NULL,
+    vendor_code TEXT NOT NULL,
+    vendor_name TEXT NOT NULL,
+    pan_card_no TEXT NOT NULL,
+    pan_card_photo TEXT NOT NULL,
+    aadhar_no TEXT NOT NULL,
+    aadhar_front_photo TEXT NOT NULL,
+    aadhar_back_photo TEXT NOT NULL,
+    driving_licence_no TEXT NOT NULL,
+    driving_licence_photo TEXT NOT NULL,
+    profile_picture TEXT NOT NULL,
+    cod_holdings NUMERIC(10,2) DEFAULT 0 CHECK (cod_holdings >= 0),
+    chalan_holdings NUMERIC(10,2) DEFAULT 0 CHECK (chalan_holdings >= 0),
+    total_deliveries INTEGER DEFAULT 0 CHECK (total_deliveries >= 0),
+    customer_ratings NUMERIC(3,1) CHECK (customer_ratings IS NULL OR customer_ratings BETWEEN 1.0 AND 5.0),
+    referral_code TEXT UNIQUE NOT NULL DEFAULT (uuid_generate_v4()::TEXT),
+    reference_code TEXT,
+    status TEXT NOT NULL DEFAULT 'New' CHECK (status IN ('New', 'Approved', 'Hold', 'Suspended', 'Blacklisted')),
+    status_remark TEXT,
+    last_device_used JSONB,
+    current_device_using JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT drivers_email_unique UNIQUE (email),
+    CONSTRAINT drivers_mobile_number_unique UNIQUE (mobile_number),
+    CONSTRAINT drivers_alternate_number_unique UNIQUE (alternate_number),
+    CONSTRAINT drivers_pan_card_no_unique UNIQUE (pan_card_no),
+    CONSTRAINT drivers_aadhar_no_unique UNIQUE (aadhar_no),
+    CONSTRAINT drivers_driving_licence_no_unique UNIQUE (driving_licence_no),
+    CONSTRAINT drivers_email_check CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
+    CONSTRAINT drivers_mobile_number_check CHECK (mobile_number ~ '^[0-9]{10,15}$'),
+    CONSTRAINT drivers_alternate_number_check CHECK (alternate_number IS NULL OR alternate_number ~ '^[0-9]{10,15}$'),
+    CONSTRAINT drivers_pin_code_check CHECK (pin_code ~ '^[0-9]{6,10}$'),
+    CONSTRAINT drivers_pan_card_no_check CHECK (pan_card_no ~ '^[A-Z]{5}[0-9]{4}[A-Z]{1}$'),
+    CONSTRAINT drivers_aadhar_no_check CHECK (aadhar_no ~ '^[0-9]{12}$'),
+    CONSTRAINT drivers_alternate_number_differs CHECK (alternate_number IS DISTINCT FROM mobile_number),
+    CONSTRAINT drivers_app_role_fkey FOREIGN KEY (app_role) REFERENCES approle(name) ON UPDATE CASCADE ON DELETE RESTRICT,
+    CONSTRAINT drivers_vendor_code_fkey FOREIGN KEY (vendor_code) REFERENCES vendors(vendor_id) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE employees (
@@ -412,7 +414,7 @@ CREATE TRIGGER update_employees_timestamp
     EXECUTE FUNCTION update_timestamp();
 
 CREATE TRIGGER update_messages_timestamp
-    BEFORE UPDATE ON messages
+    BEFORE UPDATE ON first_contact
     FOR EACH ROW
     EXECUTE FUNCTION update_timestamp();
 
@@ -799,5 +801,6 @@ INSERT INTO public.sdd_fixed_pricing (
   'active',
   'COD ranges stored using object format {min, max}'
 );
+
 
 
