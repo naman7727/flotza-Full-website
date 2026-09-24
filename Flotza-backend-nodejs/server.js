@@ -1,4 +1,19 @@
+// ===============================
+// Environment Variables
+// ===============================
+
+require('dotenv').config();
+
+
+// ===============================
+// Imports
+// ===============================
+
 const express = require('express');
+const cors = require('cors');
+
+const pool = require('./config/db');
+
 const {
   vendorRoutes,
   customerRoutes,
@@ -16,10 +31,10 @@ const {
   orderManagerRoutes
 } = require('./modules');
 
-require('dotenv').config();
 
-const path = require('path');
-const cors = require('cors');
+// ===============================
+// App
+// ===============================
 
 const app = express();
 
@@ -30,8 +45,21 @@ const app = express();
 
 const corsOptions = {
   origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+
+  methods: [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'PATCH',
+    'OPTIONS'
+  ],
+
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization'
+  ],
+
   credentials: true
 };
 
@@ -46,7 +74,7 @@ app.use(express.json());
 
 
 // ===============================
-// Health Check
+// Main Health Check
 // ===============================
 
 app.get('/', (req, res) => {
@@ -58,35 +86,109 @@ app.get('/', (req, res) => {
 
 
 // ===============================
-// Static Files
+// Database Health Check
 // ===============================
 
-// app.use(
-//   '/uploads',
-//   express.static(path.join(__dirname, 'uploads'))
-// );
+app.get('/api/health/db', async (req, res) => {
+  try {
+    const result = await pool.query(
+      'SELECT NOW() AS database_time'
+    );
+
+    res.json({
+      status: 'success',
+      message: 'Database connection successful',
+      database_time: result.rows[0].database_time
+    });
+
+  } catch (error) {
+    console.error(
+      '❌ Database health check failed:',
+      error
+    );
+
+    res.status(500).json({
+      status: 'error',
+      message: 'Database connection failed',
+      error: error.message
+    });
+  }
+});
 
 
 // ===============================
 // Routes
 // ===============================
 
-app.use('/api/auth/vendor', vendorRoutes);
-app.use('/api/auth/customer', customerRoutes);
-app.use('/api/auth/driver', driverRoutes);
-app.use('/api/auth/employee', employeeRoutes);
+app.use(
+  '/api/auth/vendor',
+  vendorRoutes
+);
 
-app.use('/api/form/contact', contactRoutes);
+app.use(
+  '/api/auth/customer',
+  customerRoutes
+);
 
-app.use('/api/dc-manager', dcManagerRoutes);
-app.use('/api/place-manager', placeManagerRoutes);
-app.use('/api/wallet-manager', walletManagerRoutes);
-app.use('/api/od-limit-manager', OdLimitManagerRoutes);
-app.use('/api/price-manager', priceManagerRoutes);
-app.use('/api/commodities-routes', commoditiesRoutes);
-app.use('/api/dynamic-price-manager', dynamicPriceManagerRoutes);
-app.use('/api/time-window', timeWindowRoutes);
-app.use('/api/order-manager', orderManagerRoutes);
+app.use(
+  '/api/auth/driver',
+  driverRoutes
+);
+
+app.use(
+  '/api/auth/employee',
+  employeeRoutes
+);
+
+app.use(
+  '/api/form/contact',
+  contactRoutes
+);
+
+app.use(
+  '/api/dc-manager',
+  dcManagerRoutes
+);
+
+app.use(
+  '/api/place-manager',
+  placeManagerRoutes
+);
+
+app.use(
+  '/api/wallet-manager',
+  walletManagerRoutes
+);
+
+app.use(
+  '/api/od-limit-manager',
+  OdLimitManagerRoutes
+);
+
+app.use(
+  '/api/price-manager',
+  priceManagerRoutes
+);
+
+app.use(
+  '/api/commodities-routes',
+  commoditiesRoutes
+);
+
+app.use(
+  '/api/dynamic-price-manager',
+  dynamicPriceManagerRoutes
+);
+
+app.use(
+  '/api/time-window',
+  timeWindowRoutes
+);
+
+app.use(
+  '/api/order-manager',
+  orderManagerRoutes
+);
 
 
 // ===============================
@@ -96,5 +198,5 @@ app.use('/api/order-manager', orderManagerRoutes);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
